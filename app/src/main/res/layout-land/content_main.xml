@@ -13,6 +13,17 @@
     tools:showIn="@layout/activity_main"
     android:id="@+id/layout">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:text="0"
+        android:layout_marginRight="76dp"
+        android:layout_marginEnd="76dp"
+        android:layout_toLeftOf="@+id/click"
+        android:layout_toStartOf="@+id/click"
+        android:layout_alignBaseline="@+id/click" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,21 +38,9 @@
         android:layout_height="wrap_content"
         android:text="RESET"
         android:id="@+id/reset"
-        android:onClick="onButtonClick2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="0"
-        android:id="@+id/text"
-        android:textAlignment="textEnd"
-        android:layout_marginRight="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/click"
-        android:layout_toStartOf="@+id/click" />
+        android:layout_marginBottom="59dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onButtonClick2" />
 </RelativeLayout>
