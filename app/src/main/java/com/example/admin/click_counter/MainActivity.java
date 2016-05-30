@@ -1,4 +1,3 @@
-
 package com.example.admin.click_counter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -22,9 +21,9 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity
 {
     private RelativeLayout Layout;
-    int total=0,a,b,c,i,j;
-    SharedPreferences prefs;
-    int select[]={50,150,250};
+    int count=0,x,y,i,j;
+    SharedPreferences preference;
+    int color[]={50,150,250};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,23 +32,23 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        total = prefs.getInt("newtotal", 0);
-        a = prefs.getInt("red", 0);
-        b = prefs.getInt("green", 0);
+        preference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        count = preference.getInt("newcount", 0);
+        x = preference.getInt("red", 0);
+        y = preference.getInt("green", 0);
         Layout = (RelativeLayout) findViewById(R.id.layout);
-        Layout.setBackgroundColor(Color.argb(255, a, b, 150 ));
+        Layout.setBackgroundColor(Color.argb(255, x, y, 150 ));
         TextView mytextView=(TextView) findViewById(R.id.text);
-        mytextView.setText(Integer.toString(total));
+        mytextView.setText(Integer.toString(count));
     }
 
     protected void onPause()
     {
         super.onPause();
-        SharedPreferences.Editor editPrefs = prefs.edit();
-        editPrefs.putInt("newtotal", total);
-        editPrefs.putInt("red", a);
-        editPrefs.putInt("green", b);
+        SharedPreferences.Editor editPrefs = preference.edit();
+        editPrefs.putInt("newcount", count);
+        editPrefs.putInt("red", x);
+        editPrefs.putInt("green", y);
         editPrefs.putInt("blue", 150);
         editPrefs.commit();
     }
@@ -57,25 +56,24 @@ public class MainActivity extends AppCompatActivity
     public void onButtonClick1(View v)
     {
         TextView mytextView=(TextView) findViewById(R.id.text);
-        total++;
-        mytextView.setText(Integer.toString(total));
+        count++;
+        mytextView.setText(Integer.toString(count));
         Layout = (RelativeLayout) findViewById(R.id.layout);
         Random rand = new Random();
         i=rand.nextInt(2);
         j=rand.nextInt(2);
-        a=select[i];
-        b=select[j];
-        Layout.setBackgroundColor(Color.argb(255, a, b, 150 ));
+        x=color[i];
+        y=color[j];
+        Layout.setBackgroundColor(Color.argb(255, x, y, 150 ));
     }
 
     public void onButtonClick2(View v)
     {
         TextView mytextView=(TextView) findViewById(R.id.text);
         Layout = (RelativeLayout) findViewById(R.id.layout);
-        total=0;
-        mytextView.setText(Integer.toString(total));
-        a=b=c=255;
-        Layout.setBackgroundColor(Color.argb(255, a, b, c ));
+        count=0;
+        mytextView.setText(Integer.toString(count));
+        Layout.setBackgroundColor(Color.argb(255,255,255,255 ));
     }
 
     @Override
@@ -84,8 +82,8 @@ public class MainActivity extends AppCompatActivity
         super.onSaveInstanceState(savedInstanceState);
         TextView mytextView = (TextView) findViewById(R.id.text);
         savedInstanceState.putCharSequence("myText",mytextView.getText());
-        savedInstanceState.putInt("cl",a);
-        savedInstanceState.putInt("c2",b);
+        savedInstanceState.putInt("cl",x);
+        savedInstanceState.putInt("c2",y);
     }
 
     @Override
@@ -95,13 +93,13 @@ public class MainActivity extends AppCompatActivity
         TextView mytextView=(TextView) findViewById(R.id.text);
         Layout = (RelativeLayout) findViewById(R.id.layout);
         CharSequence tText=savedInstanceState.getCharSequence("myText");
-        a=savedInstanceState.getInt("cl",a);
-        b=savedInstanceState.getInt("c2",b);
-        Layout.setBackgroundColor(Color.argb(255, a, b, 150 ));
-        total = Integer.parseInt((String) tText);
+        x=savedInstanceState.getInt("cl",x);
+        y=savedInstanceState.getInt("c2",y);
+        Layout.setBackgroundColor(Color.argb(255,x,y,150 ));
+        count = Integer.parseInt((String) tText);
         if (savedInstanceState != null)
         {
-            mytextView.setText(Integer.toString(total));
+            mytextView.setText(Integer.toString(count));
         }
     }
 }

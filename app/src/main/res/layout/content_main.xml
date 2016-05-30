@@ -13,32 +13,33 @@
     tools:showIn="@layout/activity_main"
     android:id="@+id/layout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text"
-        android:text="0"
-        android:layout_marginBottom="53dp"
-        android:layout_above="@+id/click"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CLICK ME"
         android:id="@+id/click"
-        android:layout_centerVertical="true"
+        android:onClick="onButtonClick1"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onButtonClick1" />
+        android:layout_marginBottom="204dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RESET"
         android:id="@+id/reset"
-        android:layout_marginBottom="113dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/click"
-        android:layout_toEndOf="@+id/click"
-        android:onClick="onButtonClick2" />
+        android:onClick="onButtonClick2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/text"
+        android:layout_marginBottom="70dp"
+        android:layout_above="@+id/click"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
